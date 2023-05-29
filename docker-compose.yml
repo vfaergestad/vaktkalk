@@ -3,7 +3,7 @@ version: '3'
 services:
   web:
     build: .
-    image: vaktkalk:latest
+    image: vfaergestad/vaktkalk:latest
     container_name: vaktkalk
     ports:
       - "8080:80"
