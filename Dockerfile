@@ -13,7 +13,6 @@ USER node
 WORKDIR /srv
 
 RUN npm install
-RUN npx grunt prod
 
 FROM nginx:latest as app
 
