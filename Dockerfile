@@ -1,7 +1,7 @@
 FROM node:latest as build
 
 # Copy the HTML and JS files into the Nginx container
-COPY vaktkalk.html /srv/vaktkalk.html
+COPY vaktkalk.html /srv/index.html
 COPY vaktkalk.js /srv/vaktkalk.js
 COPY styles.css /srv/styles.css
 COPY package.json /srv/package.json
