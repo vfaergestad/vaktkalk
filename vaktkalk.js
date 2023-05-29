@@ -24,6 +24,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
     // Prevent the default form submission behavior
     event.preventDefault();
 
+    // Check each input field and set its value to 0 if it's empty
+    $('input[type="number"]').each(function() {
+      if ($(this).val() === '') {
+        $(this).val(0);
+      }
+    });
+
     // Get the input values
     const n1s = parseInt(document.getElementById('N1').value);
     const n2s = parseInt(document.getElementById('N2').value);
