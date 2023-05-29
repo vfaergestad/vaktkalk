@@ -1,19 +1,22 @@
-# Use the official Nginx image as the base image
-FROM node:14
-
-# Install nginx
-RUN apt-get update && apt-get install -y nginx
+FROM node:latest as build
 
 # Copy the HTML and JS files into the Nginx container
-COPY vaktkalk.html /usr/share/nginx/html/vaktkalk.html
-COPY vaktkalk.js /usr/share/nginx/html/vaktkalk.js
-COPY styles.css /usr/share/nginx/html/styles.css
-COPY package.json /usr/share/nginx/html/package.json
-COPY package-lock.json /usr/share/nginx/html/package-lock.json
+COPY vaktkalk.html /srv/vaktkalk.html
+COPY vaktkalk.js /srv/vaktkalk.js
+COPY styles.css /srv/styles.css
+COPY package.json /srv/package.json
+COPY package-lock.json /srv/package-lock.json
+
+RUN chown -R node:node /srv
+
+USER node
+WORKDIR /srv
 
 RUN npm install
+RUN npx grunt prod
 
-COPY node_modules/fomantic-ui/ /usr/share/nginx/html/node_modules/fomantic-ui/
+FROM nginx:latest as app
 
-# Expose the default Nginx port
-EXPOSE 80
+COPY --from=build /srv /usr/share/nginx/html
+
+EXPOSE 80/tcp
