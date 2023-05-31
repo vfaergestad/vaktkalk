@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vakt-kalkulator</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js"></script>
+    <script src="vaktkalk.js"></script>
+  </head>
+  <body>
+    <div class="ui container menu" style="width: 600px; margin-top: 14px;">
+      <a class="item active">Kalkulator</a>
+      <a class="item" href="data.html">Timer og tillegg</a>
+      <a class="right item" href="about.html">About</a>
+    </div>
+    <div class="ui container" style="width: 600px;">
+      <div class="ui segment">
+        <h3 class="ui header">Vakt-kalkulator</h3>
+            <form class="ui form" id="vaktkalk-form">
+              <div class="two fields">
+                <div class="field">
+                  <label>Timelønn</label>
+                  <input type="number" name="timelonn" placeholder="Timelønn" id="hourly_rate">
+                </div>
+                <div class="field">
+                  <label>N1</label>
+                  <input type="number" name="n1" placeholder="N1" id="N1">
+                </div>
+              </div>
+              <div class="two fields">
+                <div class="field">
+                  <label>N2</label>
+                  <input type="number" name="n2" placeholder="N2" id="N2">
+                </div>
+                <div class="field">
+                  <label>N3</label>
+                  <input type="number" name="n3" placeholder="N3" id="N3">
+                </div>
+              </div>
+              <div class="two fields">
+                <div class="field">
+                  <label>H1</label>
+                  <input type="number" name="h1" placeholder="H1" id="H1">
+                </div>
+                <div class="field">
+                  <label>H2</label>
+                  <input type="number" name="h2" placeholder="H2" id="H2">
+                </div>
+              </div>
+              <div class="two fields">
+                <div class="field">
+                  <label>AN</label>
+                  <input type="number" name="an" placeholder="AN" id="AN">
+                </div>
+                <div class="field">
+                  <label>AK</label>
+                  <input type="number" name="ak" placeholder="AK" id="AK">
+                </div>
+              </div>
+              <div class="two fields">
+                <div class="field">
+                  <label>Andre timer
+                    <i class="circle help link grey icon" data-content="Timer du har jobbet utover vaktene, f. eks fagdag."></i>
+                  </label>
+                  <input type="number" name="ekstra" placeholder="Andre timer" id="extra_hours">
+                </div>
+                <div class="field">
+                  <label>Helligdagstimer</label>
+                  <input type="number" name="hellig" placeholder="Helligdagstimer" id="hellig_hours">
+                </div>
+              </div>
+              <div class="two fields">
+                <div class="field">
+                  <label>Prosent- trekk</label>
+                  <input type="number" name="prosenttrekk" placeholder="Prosenttrekk" id="tax_rate">
+                </div>
+              </div>
+              <button class="ui button" type="submit" id="submit">Regn ut</button>
+            </form>
+      
+      <div class="ui divider"></div>
+      <h3 class="header">Resultat</h3>
+      <table class="ui celled table">
+        <tbody>
+          <tr>
+            <td>Antall timer</td>
+            <td class="four wide" id="total_hours">0</td>
+          </tr>
+          <tr>
+            <td>Effektiv timelønn</td>
+            <td class="four wide" id="effective_pay">0</td>
+          </tr>
+          <tr>
+            <td>Bruttolønn</td>
+            <td class="four wide" id="total_pay">0</td>
+          </tr>
+          <tr>
+            <td>Nettolønn</td>
+            <td class="four wide" id="pay_after_tax">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ui basic modal">
+      <div class="ui icon header">
+        <i class="blind icon"></i>
+        Ingen timelønn
+      </div>
+      <div class="content">
+        <p>Du tjener mer enn 0 kr i timen. Fyll det ut.</p>
+      </div>
+      <div class="actions">
+        <div class="ui green ok inverted button">
+          <i class="checkmark icon"></i>
+          Søren klype.
+        </div>
+      </div>
+    </div>
+    <script>
+      $('.circle.help.link.icon')
+    .popup()
+;
+    </script>
+  </body>
+</html>

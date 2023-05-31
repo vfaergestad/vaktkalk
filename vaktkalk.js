@@ -44,6 +44,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const hourly_rate = parseInt(document.getElementById('hourly_rate').value);
     const tax_rate = parseInt(document.getElementById('tax_rate').value);
 
+    if (hourly_rate == 0) {
+      $('.ui.basic.modal')
+        .modal('show')
+      ;
+    }
+
     // Calculate the total hours
     const total_hours = n1s * N1.hours + n2s * N2.hours + n3s * N3.hours + h1s * H1.hours + h2s * H2.hours + ans * AN.hours + aks * AK.hours + extra_hours * 1;
 

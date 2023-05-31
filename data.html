@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vakt-kalkulator</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js"></script>
+    <script src="vaktkalk.js"></script>
+  </head>
+  <body>
+    <div class="ui container menu" style="width: 600px; margin-top: 14px;">
+      <a class="item" href="index.html">Kalkulator</a>
+      <a class="item active">Timer og tillegg</a>
+      <a class="right item" href="about.html">About</a>
+    </div>
+    <div class="ui container" style="width: 600px;">
+        <div class="ui segment">
+            <h3 class="ui header">Vakter</h3>
+            <table class="ui celled table">
+              <thead>
+                <tr>
+                  <th>Vakt</th>
+                  <th>Timer</th>
+                  <th>Natttimer</th>
+                  <th>Helgetimer</th>
+                  <th>Morgen/kveldstimer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Vakt" id="N1-Vakt">N1</td>
+                  <td data-label="Timer" id="N1-Timer" data-tooltip="21:45 - 07:45">20</td>
+                  <td data-label="Natttimer" id="N1-Natttimer" data-tooltip="21:45 - 06:00">16.3</td>
+                  <td data-label="Helgetimer" id="N1-Helgetimer" data-tooltip="NaN">0</td>
+                  <td data-label="Morgen/kveldstimer" id="N1-Morgen-kveldstimer" data-tooltip="06:00 - 07:00">2</td>
+                </tr>
+                <tr>
+                  <td data-label="Vakt" id="N2-Vakt">N2</td>
+                  <td data-label="Timer" id="N2-Timer" data-tooltip="21:45 - 07:45">20</td>
+                  <td data-label="Natttimer" id="N2-Natttimer" data-tooltip="21:45 - 06:00">16.3</td>
+                  <td data-label="Helgetimer" id="N2-Helgetimer" data-tooltip="NaN">0</td>
+                  <td data-label="Morgen/kveldstimer" id="N2-Morgen-kveldstimer" data-tooltip="06:00 - 07:00">2</td>
+                </tr>
+                <tr>
+                  <td data-label="Vakt" id="N3-Vakt">N3</td>
+                  <td data-label="Timer" id="N3-Timer" data-tooltip="21:45 - 07:45">30</td>
+                  <td data-label="Natttimer" id="N3-Natttimer" data-tooltip="21:45 - 06:00">24.45</td>
+                  <td data-label="Helgetimer" id="N3-Helgetimer" data-tooltip="Lør: 00:00 - 07:45, 21:45 - 24:00 + Søn: 00:00 - 07:45, 21:45 - 24:00">20</td>
+                  <td data-label="Morgen/kveldstimer" id="N3-Morgen-kveldstimer" data-tooltip="Man: 06:00 - 07:00">1</td>
+                </tr>
+                <tr>
+                  <td data-label="Vakt" id="H1-Vakt">H1</td>
+                  <td data-label="Timer" id="H1-Timer" data-tooltip="7.5 * 3">22.5</td>
+                  <td data-label="Natttimer" id="H1-Natttimer" data-tooltip="NaN">0</td>
+                  <td data-label="Helgetimer" id="H1-Helgetimer" data-tooltip="7,5 * 2">15</td>
+                  <td data-label="Morgen/kveldstimer" id="H1-Morgen-kveldstimer" data-tooltip="Tillegget utgår i helga">0</td>
+                </tr>
+                <tr>
+                  <td data-label="Vakt" id="H2-Vakt">H2</td>
+                  <td data-label="Timer" id="H2-Timer"data-tooltip="7.5 * 3">22.5</td>
+                  <td data-label="Natttimer" id="H2-Natttimer" data-tooltip="20:00-22-00 * 2">3,5</td>
+                  <td data-label="Helgetimer" id="H2-Helgetimer" data-tooltip="7.5 * 2">15</td>
+                  <td data-label="Morgen/kveldstimer" id="H2-Morgen-kveldstimer" data-tooltip="Tillegget utgår i helga">0</td>
+                </tr>
+                <tr>
+                  <td data-label="Vakt" id="AN-Vakt">AN</td>
+                  <td data-label="Timer" id="AN-Timer" data-tooltip="7.5 * 5">37.5</td>
+                  <td data-label="Natttimer" id="AN-Natttimer" data-tooltip="NaN">0</td>
+                  <td data-label="Helgetimer" id="AN-Helgetimer" data-tooltip="NaN">0</td>
+                  <td data-label="Morgen/kveldstimer" id="AN-Morgen-kveldstimer" data-tooltip="NaN">0</td>
+                </tr>
+                <tr>
+                  <td data-label="Vakt" id="AK-Vakt">AK</td>
+                  <td data-label="Timer" id="AK-Timer" data-tooltip="8 * 5">40</td>
+                  <td data-label="Natttimer" id="AK-Natttimer" data-tooltip="20:00 - 22:00 * 5">10</td>
+                  <td data-label="Helgetimer" id="AK-Helgetimer" data-tooltip="NaN">0</td>
+                  <td data-label="Morgen/kveldstimer" id="AK-Morgen-kveldstimer" data-tooltip="17:00 - 20:00 * 5">15</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="ui divider"></div>
+            <h3 class="ui header">Tillegg</h3>
+            <table class="ui celled table">
+                <thead>
+                  <tr>
+                    <th>Navn</th>
+                    <th>Tillegg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="navn-natt">Natt</td>
+                    <td id="tillegg-natt">Timelønn x 0.45</td>
+                  </tr>
+                  <tr>
+                    <td id="navn-helg">Helg</td>
+                    <td id="tillegg-helg">65 kr</td>
+                  </tr>
+                  <tr>
+                    <td id="navn-morgen-kveld">Morgen/kveld</td>
+                    <td id="tillegg-morgen-kveld">25 kr</td>
+                  </tr>
+                  <tr>
+                    <td id="navn-helligdag">Helligdag</td>
+                    <td id="tillegg-helligdag">Timelønn</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+    </div>
+  </body>
+</html>
